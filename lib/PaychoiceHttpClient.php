@@ -116,7 +116,7 @@ class PaychoiceHttpClient
 		{
 			throw new PaychoiceException("Could not successfully communicate with payment processor. Error: {$error}.");
 		}
-		else if (isset($responseCode) && strlen($responseCode) && $responseCode != '200')
+		else if (isset($responseCode) && strlen($responseCode) && $responseCode == '500')
 		{
 			throw new PaychoiceException("Could not successfully communicate with payment processor. HTTP response code {$responseCode}.");
 		}
