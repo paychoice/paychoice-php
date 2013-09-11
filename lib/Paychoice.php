@@ -45,12 +45,18 @@ class Paychoice
 
     function storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv)
     {
+    	return $this->storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv, false);
+    }
+
+    function storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv, $storePermanently)
+    {
         $data = array(
             "card[name]" => $cardName,
             "card[number]" => $cardNumber,
             "card[cvv]" => $cardCvv,
             "card[expiry_month]" => $cardExpiryMonth,
             "card[expiry_year]" => $cardExpiryYear,
+            "durable" => ($storePermanently ? "true" : "false"),
         );
         return $this->httpClient->post($this->tokenEndpoint, $data);	
     }
