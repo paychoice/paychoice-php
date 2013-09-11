@@ -43,12 +43,7 @@ class Paychoice
         $this->useSandbox = $sandboxAccount;
     }
 
-    function storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv)
-    {
-    	return $this->storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv, false);
-    }
-
-    function storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv, $storePermanently)
+    function storeCard($cardName, $cardNumber, $cardExpiryMonth, $cardExpiryYear, $cardCvv, $storePermanently = false)
     {
         $data = array(
             "card[name]" => $cardName,
